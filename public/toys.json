@@ -1,0 +1,122 @@
+[
+  {
+    "toyId": 2,
+    "toyName": "Mega Bloks First Builders",
+    "sellerName": "KidZone Mart",
+    "sellerEmail": "support@kidzonemart.com",
+    "price": 29.99,
+    "rating": 4.5,
+    "availableQuantity": 120,
+    "description": "Large colorful blocks designed for small hands. Perfect for toddlers to learn stacking and basic construction.",
+    "pictureURL": "https://i.ibb.co.com/TxCxbYDn/1.jpg",
+    "subCategory": "Building Blocks"
+  },
+  {
+    "toyId": 3,
+    "toyName": "Hot Wheels Super Speed Racer",
+    "sellerName": "Urban Toy Hub",
+    "sellerEmail": "info@urbantoyhub.com",
+    "price": 14.99,
+    "rating": 4.6,
+    "availableQuantity": 200,
+    "description": "A sleek die-cast racing car designed for high-speed fun on Hot Wheels tracks.",
+    "pictureURL": "https://i.ibb.co.com/KcM3jWPX/2.jpg",
+    "subCategory": "Diecast Cars"
+  },
+  {
+    "toyId": 4,
+    "toyName": "Barbie Dream Doll",
+    "sellerName": "Pretty Toys Store",
+    "sellerEmail": "hello@prettytoysstore.com",
+    "price": 24.99,
+    "rating": 4.8,
+    "availableQuantity": 90,
+    "description": "A stylish Barbie doll with fashionable accessories, inspiring imaginative storytelling.",
+    "pictureURL": "https://i.ibb.co.com/qZ48scR/3.jpg",
+    "subCategory": "Dolls"
+  },
+  {
+    "toyId": 5,
+    "toyName": "Nerf Elite Blaster",
+    "sellerName": "Action Play Co.",
+    "sellerEmail": "contact@actionplayco.com",
+    "price": 39.99,
+    "rating": 4.4,
+    "availableQuantity": 150,
+    "description": "High-performance foam dart blaster with long-range accuracy. Safe and fun for kids.",
+    "pictureURL": "https://i.ibb.co.com/b5VX5JDx/4.jpg",
+    "subCategory": "Outdoor Toys"
+  },
+  {
+    "toyId": 6,
+    "toyName": "RC Monster Truck",
+    "sellerName": "Remote Fun Center",
+    "sellerEmail": "support@remotefuncenter.com",
+    "price": 59.99,
+    "rating": 4.7,
+    "availableQuantity": 65,
+    "description": "A rugged remote-controlled monster truck built for off-road adventures.",
+    "pictureURL": "https://i.ibb.co.com/wFcnh57D/5.jpg",
+    "subCategory": "Remote Control"
+  },
+  {
+    "toyId": 7,
+    "toyName": "Wooden Train Set",
+    "sellerName": "Classic Toy Works",
+    "sellerEmail": "sales@classictoyworks.com",
+    "price": 34.99,
+    "rating": 4.9,
+    "availableQuantity": 40,
+    "description": "Beautifully crafted wooden train set with magnetic cars and sturdy tracks.",
+    "pictureURL": "https://i.ibb.co.com/BVHGRVwx/6.jpg",
+    "subCategory": "Educational Toys"
+  },
+  {
+    "toyId": 18,
+    "toyName": "Foam Football",
+    "sellerName": "Sports4Kids",
+    "sellerEmail": "sales@sports4kids.com",
+    "price": 10.99,
+    "rating": 4.3,
+    "availableQuantity": 160,
+    "description": "Soft foam football perfect for safe outdoor play and learning basic throwing skills.",
+    "pictureURL": "https://i.ibb.co.com/XZQkv3Zf/17.jpg",
+    "subCategory": "Outdoor Toys"
+  },
+  {
+    "toyId": 19,
+    "toyName": "Princess Castle Playset",
+    "sellerName": "Fantasy Toy House",
+    "sellerEmail": "hello@fantasytoyhouse.com",
+    "price": 45.99,
+    "rating": 4.9,
+    "availableQuantity": 45,
+    "description": "A detailed princess castle with miniature furniture and characters for imaginative play.",
+    "pictureURL": "https://i.ibb.co.com/dwJDNvgg/18.jpg",
+    "subCategory": "Dollhouses"
+  },
+  {
+    "toyId": 20,
+    "toyName": "Magnetic Tiles Construction Set",
+    "sellerName": "Build & Learn Co.",
+    "sellerEmail": "support@buildlearn.com",
+    "price": 59.99,
+    "rating": 4.8,
+    "availableQuantity": 130,
+    "description": "A colorful magnetic tile set allowing kids to construct towers, houses, and geometric shapes.",
+    "pictureURL": "https://i.ibb.co.com/9m63QZPW/19.jpg",
+    "subCategory": "Building Blocks"
+  },
+  {
+    "toyId": 21,
+    "toyName": "Toy Kitchen Set",
+    "sellerName": "MiniChef Toys",
+    "sellerEmail": "contact@minicheftoys.com",
+    "price": 39.99,
+    "rating": 4.6,
+    "availableQuantity": 60,
+    "description": "Miniature kitchen playset with utensils and pretend food items, perfect for role play.",
+    "pictureURL": "https://i.ibb.co.com/8gKQ6mpC/20.jpg",
+    "subCategory": "Role Play"
+  }
+]
