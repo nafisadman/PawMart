@@ -4,9 +4,10 @@ import ToyItem from "./ToyItem";
 
 const ToyStore = () => {
   const data = useLoaderData();
+  // console.log(data);
   const [services, setServices] = useState(data);
-  const [category, setCategory] = useState("");
 
+  const [category, setCategory] = useState("");
   useEffect(() => {
     fetch(`https://b12-a11-pawmart-server.vercel.app/services?category=${category}`)
       .then((res) => res.json())

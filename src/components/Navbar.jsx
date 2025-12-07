@@ -165,7 +165,7 @@ const Navbar = () => {
                 data-tip={user.email}
               >
                 <img
-                  className="w-12 h-12 object-cover rounded-full border-2 border-red-400"
+                  className="w-12 h-12 object-cover rounded-full"
                   src={`${user ? user.photoURL : userIcon}`}
                   alt="User Profile"
                 />

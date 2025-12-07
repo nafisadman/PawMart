@@ -6,7 +6,6 @@ import Loading from "../pages/Loading";
 import Footer from "../components/Footer";
 import Slider from "../components/Slider";
 import Subscribe from "../components/Subscribe";
-import RecentListings from "../pages/RecentListings";
 
 const HomeLayout = () => {
   const { state } = useNavigation();
@@ -23,9 +22,9 @@ const HomeLayout = () => {
         <div>
           <Slider></Slider>
         </div>
-        <div className="w-11/12 mx-auto my-3 border-2 border-red-400">
-          <section className="main border-2 border-blue-400">
-            {state == "loading" ? <Loading></Loading> : <RecentListings></RecentListings>}
+        <div className="w-11/12 mx-auto my-3">
+          <section className="main">
+            {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>}
           </section>
         </div>
         <div>

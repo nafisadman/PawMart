@@ -8,7 +8,7 @@ import { TbCategory2 } from "react-icons/tb";
 
 const ToyItem = ({ toy }) => {
   useEffect(() => {
-    AOS.init();
+    // AOS.init();
   }, []);
   const {
     _id,
@@ -24,10 +24,10 @@ const ToyItem = ({ toy }) => {
     <div>
       <div
         className="card bg-base-100 max-w-96 max-h-96 shadow-sm m-5 "
-        data-aos="fade-zoom-in"
-        data-aos-offset="200"
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="600"
+        // data-aos="fade-zoom-in"
+        // data-aos-offset="200"
+        // data-aos-easing="ease-in-sine"
+        // data-aos-duration="600"
       >
         <figure>
           <img src={imageUrl} alt="Shoes" />

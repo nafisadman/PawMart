@@ -29,12 +29,6 @@ const router = createBrowserRouter([
         path: "",
         element: <Home></Home>,
       },
-      // {
-      //   path: "/toys/",
-      //   element: <ToyStore></ToyStore>,
-      //   loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
-      //   hydrateFallbackElement: <Loading></Loading>,
-      // },
       {
         path: "/pets/",
         element: <RecentListings></RecentListings>,
