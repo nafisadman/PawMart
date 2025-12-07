@@ -3,8 +3,7 @@ import ToyStore from '../components/homelayout/ToyStore';
 
 const PetsAndSuppliers = () => {
     return (
-        <div className='border'>
-            Pets and Suppliers
+        <div className=''>
             <ToyStore></ToyStore>
         </div>
     );

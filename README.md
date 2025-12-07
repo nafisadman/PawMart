@@ -1,102 +1,78 @@
-# 🧸 ToyTopia  
-A Vibrant Kids Toy Store Platform — *Built with React + Vite*
+# 🐾 PawMart - Pet Services & Supplies Portal
 
-Live URL: **http://toytopia-nsk.surge.sh/**  
+**PawMart** is a full-stack web application designed to connect pet owners with essential services and products. It serves as a comprehensive marketplace where users can browse pet toys, book services, and manage their own service listings.
 
----
+## 🔗 Live Links
+- **Client (Frontend):** [https://pawmart-639fe.web.app](https://pawmart-639fe.web.app)
+- **Server (Backend API):** [https://b12-a11-pawmart-server.vercel.app](https://b12-a11-pawmart-server.vercel.app)
 
-## 🌟 Purpose  
-**ToyTopia** is a colorful and engaging online marketplace designed to help families explore high-quality toys from local sellers. The platform allows users to browse toys, view detailed information, authenticate using email/Google, manage profiles, and interact with protected routes through a seamless and fully responsive UI.
-
----
-
-## 🚀 Key Features  
-
-### 🏠 Core Pages & Navigation
-- Fully responsive layout for **mobile**, **tablet**, and **desktop**  
-- Interactive **Navbar** with active routes  
-- Dynamic user UI: login button OR user image + logout button  
-- Persistent auth state using `onAuthStateChanged`  
-- Beautiful **Footer** with important links  
-
-### 🎠 Home Page
-- **Swiper/Daisy Slider** with a minimum of 3 slides  
-- **Popular Toys Section** (cards include: thumbnail, name, rating, quantity, price, View More)  
-- Additional custom sections to enhance the homepage  
-
-### 🔐 Authentication (Firebase)
-- **Email & Password Login**  
-- **Google Login**  
-- Error & success feedback using **Toast/SweetAlert**  
-- Password validation rules:
-  - At least 1 uppercase  
-  - At least 1 lowercase  
-  - Minimum 6 characters  
-
-### 🧾 Register Page
-- Fields: Name, Email, PhotoURL, Password  
-- Toggle **Show/Hide Password**  
-- Redirect links between Login/Register  
-- Functional **Forgot Password** page  
-- Autofills email from login page → redirects to Gmail after reset request  
-
-### 🔒 Protected Routes
-- **Toy Details Page**  
-  - Access only when logged in  
-  - Displays all toy data  
-  - Includes a **Try Now Form** (Name + Email) with success message on submit  
-  - Page remains accessible after reload  
-- **My Profile Page (Challenge)**  
-  - View name, email, photoURL  
-  - Update profile using `updateProfile()`  
-
-### ➕ Extra Route  
-- Additional meaningful protected route implemented as required  
-
-### ⚙️ Environment Variables  
-Firebase keys are securely stored using Vite environment variables (`.env`)
-
-### ⚠️ 404 Page  
-Custom Not Found page added  
-
-### 🎨 UI & Experience  
-- Vibrant and playful design  
-- Smooth animations  
-- Pleasant and kid-friendly theme  
+## 📂 Source Code
+- **Frontend Repository:** [GitHub - PawMart Client](https://github.com/nafisadman/b12-a11-pawmart-client)
+- **Backend Repository:** [GitHub - PawMart Server](https://github.com/nafisadman/b12-a11-pawmart-server)
 
 ---
 
-## 📦 NPM Packages Used  
+## ✨ Key Features
 
-| Package | Purpose |
-|--------|---------|
-| **react-router-dom** | SPA routing |
-| **firebase** | Authentication + config |
-| **sweetalert2 / react-hot-toast** | Alerts & toasts |
-| **swiper** | Homepage slider |
-| **aos** *(if used)* | Scroll animations |
-| **tailwindcss** | Styling |
-| **@tailwindcss/vite** | Vite plugin for Tailwind |
-| **@vitejs/plugin-react** | React support in Vite |
+* **🔐 Secure Authentication System:** * Implements Firebase Authentication for secure Email/Password login and registration.
+    * Includes **Social Login** (Google) for quick one-click access.
+    * Protected routes ensure sensible data (like bookings) is only accessible to logged-in users.
 
-*(Include or remove based on your actual project setup.)*
+* **🛠️ Service Management (CRUD):** * Users can **Add** their own pet services or products to the marketplace.
+    * Users can **Update** details of their existing listings.
+    * A dedicated "My Services" page allows users to manage and delete their contributions.
 
----
+* **📦 Booking & Order Tracking:** * Users can book services offered by others.
+    * The "My Orders" page displays a personalized list of all booked services with status updates.
 
-## 🛠️ Tech Stack  
-- **React**
-- **Vite**
-- **Firebase Authentication**
-- **Tailwind CSS**
-- **Surge Hosting**
-- **ESLint (Custom)**
+* **🔍 Interactive Toy/Service Browsing:** * Features a dynamic homepage with a **Slider/Banner** and featured sections (Hero Figure, Q-Zone).
+    * **Details Page:** Users can click "View Details" on any item to see comprehensive information, pricing, and provider data.
+
+* **📱 Responsive & Modern UI:** * Built with **React + Vite** for blazing-fast performance.
+    * Fully responsive layout that adapts seamlessly to desktop, tablet, and mobile devices.
+    * Includes engaging UI components like Customer Reviews and dynamic Footers.
 
 ---
 
-## 🌐 Live Link  
-🔗 **http://toytopia-nsk.surge.sh/**
+## 💻 Tech Stack
+
+**Frontend:**
+* React.js
+* Vite
+* Tailwind CSS (Implied for styling)
+* Firebase (Authentication & Hosting)
+* React Router DOM
+
+**Backend:**
+* Node.js
+* Express.js
+* MongoDB (Database)
+* Vercel (Deployment)
 
 ---
 
-## 🧑‍💻 Author  
-Developed by **Nafi**
+## 🚀 How to Run Locally
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/nafisadman/b12-a11-pawmart-client.git](https://github.com/nafisadman/b12-a11-pawmart-client.git)
+    ```
+
+2.  **Navigate to the project directory:**
+    ```bash
+    cd nafisadman-b12-a11-pawmart-client
+    ```
+
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+4.  **Set up Environment Variables:**
+    * Create a `.env.local` file in the root directory.
+    * Add your Firebase configuration keys (VITE_apiKey, VITE_authDomain, etc.).
+
+5.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```

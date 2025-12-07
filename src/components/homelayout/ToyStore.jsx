@@ -16,8 +16,8 @@ const ToyStore = () => {
   }, [category]);
 
   return (
-    <div className="border">
-      <h1 className="text-3xl font-bold text-primary mb-3">Recent Listings</h1>
+    <div className="">
+      <h1 className="text-3xl font-bold text-primary mb-3">Filter by</h1>
       <select
         onChange={(e) => setCategory(e.target.value)}
         defaultValue="Pick a color"
@@ -29,7 +29,7 @@ const ToyStore = () => {
         <option value="Accessories">Accessories</option>
         <option value="Care Products">Care Products</option>
       </select>
-      <div className="grid grid-cols-1 md:grid-cols-3 border">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         {services.map((toy) => (
           <ToyItem toy={toy}></ToyItem>
         ))}
