@@ -28,7 +28,7 @@ const ToyStore = () => {
         <option value="Accessories">Accessories</option>
         <option value="Care Products">Care Products</option>
       </select>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         {services.map((toy) => (
           <ToyItem toy={toy}></ToyItem>
         ))}

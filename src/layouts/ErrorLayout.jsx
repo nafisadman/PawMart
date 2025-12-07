@@ -9,7 +9,7 @@ const ErrorLayout = () => {
       <div className="hero bg-base-200 min-h-screen flex items-center justify-center">
         <div className="hero-content text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
           <div className="max-w-xl">
-            <h1 className="text-9xl font-extrabold text-red-600 dark:text-red-500 mb-4">
+            <h1 className="text-9xl font-extrabold text-primary mb-4">
               404
             </h1>
             <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">

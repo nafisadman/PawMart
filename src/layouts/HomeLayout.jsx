@@ -22,13 +22,10 @@ const HomeLayout = () => {
         <div>
           <Slider></Slider>
         </div>
-        <div className="w-11/12 mx-auto my-3 grid grid-cols-1 md:grid-cols-4 md:gap-5">
-          <section className="main col-span-1 md:col-span-3">
+        <div className="w-11/12 mx-auto my-3 border-2 border-red-400">
+          <section className="main border-2 border-blue-400">
             {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>}
           </section>
-          <aside className="hidden md:block col-span-1 sticky top-0 h-fit">
-            <RightAside></RightAside>
-          </aside>
         </div>
         <div>
           <Subscribe></Subscribe>

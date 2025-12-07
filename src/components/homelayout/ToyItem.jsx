@@ -23,7 +23,7 @@ const ToyItem = ({ toy }) => {
   return (
     <div>
       <div
-        className="card bg-base-100 max-w-96 shadow-sm m-5 "
+        className="card bg-base-100 max-w-96 max-h-96 shadow-sm m-5 "
         data-aos="fade-zoom-in"
         data-aos-offset="200"
         data-aos-easing="ease-in-sine"
