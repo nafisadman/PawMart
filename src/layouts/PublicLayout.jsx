@@ -19,7 +19,7 @@ const HomeLayout = () => {
         </nav>
       </header>
       <main>
-        <div className="w-11/12 mx-auto my-3 grid grid-cols-1 md:grid-cols-4 md:gap-5">
+        <div className="w-11/12 mx-auto">
           <section className="main col-span-1 md:col-span-3">
             {state == "loading" ? <Loading></Loading> : <Outlet></Outlet>}
           </section>

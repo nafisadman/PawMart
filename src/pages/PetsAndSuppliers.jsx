@@ -1,9 +1,11 @@
 import React from 'react';
+import ToyStore from '../components/homelayout/ToyStore';
 
 const PetsAndSuppliers = () => {
     return (
-        <div>
+        <div className='border'>
             Pets and Suppliers
+            <ToyStore></ToyStore>
         </div>
     );
 };

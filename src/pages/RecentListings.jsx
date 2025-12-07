@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
-import ToyItem from "./ToyItem";
+import ToyItem from "../components/homelayout/ToyItem";
 
-const ToyStore = () => {
+const RecentListings = () => {
   const data = useLoaderData();
   const [services, setServices] = useState(data);
   const [category, setCategory] = useState("");
 
   useEffect(() => {
-    fetch(`https://b12-a11-pawmart-server.vercel.app/services?category=${category}`)
+    fetch(
+      `https://b12-a11-pawmart-server.vercel.app/services?category=${category}`
+    )
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.log(err));
@@ -16,7 +18,7 @@ const ToyStore = () => {
 
   return (
     <div className="border">
-      <h1 className="text-3xl font-bold text-primary mb-3">Recent Listings</h1>
+      <h1 className="text-3xl font-bold text-primary mb-3">Recent Listings 2</h1>
       <select
         onChange={(e) => setCategory(e.target.value)}
         defaultValue="Pick a color"
@@ -29,7 +31,7 @@ const ToyStore = () => {
         <option value="Care Products">Care Products</option>
       </select>
       <div className="grid grid-cols-1 md:grid-cols-3 border">
-        {services.map((toy) => (
+        {services?.map((toy) => (
           <ToyItem toy={toy}></ToyItem>
         ))}
       </div>
@@ -37,4 +39,4 @@ const ToyStore = () => {
   );
 };
 
-export default ToyStore;
+export default RecentListings;
