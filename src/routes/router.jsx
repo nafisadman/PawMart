@@ -15,6 +15,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import AddService from "../pages/AddService";
 import MyServices from "../pages/MyServices";
 import UpdateService from "../pages/UpdateService";
+import MyOrders from "../pages/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/auth/my-services",
         element: <PrivateRoute><MyServices></MyServices></PrivateRoute>,
+      },
+      {
+        path: "/auth/my-orders",
+        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
       },
       {
         path: "/auth/update-services/:id",

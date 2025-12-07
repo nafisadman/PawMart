@@ -1,24 +1,68 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { FcRating } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
+import { useParams } from "react-router";
 
 const ToyDetailsCard = ({ key, toyDetails }) => {
-  const {
-    _id,
-    name,
-    location,
-    imageUrl,
-    description,
-    price,
-    category,
-  } = toyDetails;
+  const { _id, name, location, imageUrl, description, price, category } =
+    toyDetails;
+
   const notify = () => toast("Check your email for further instrucitons");
   const notify1 = () => toast("Item bought Successfully!");
   const handleBuyNow = () => {
     notify1();
-  }
+  };
+
+  const [service, setService] = useState();
+  const { user } = useContext(AuthContext);
+
+  const { id } = useParams();
+  useEffect(() => {
+    axios.get(`http://localhost:3000/services/${id}`).then((res) => {
+      setService(res.data);
+    });
+  }, [id]);
+
+  const handleOrder = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const productName = form.productName.value;
+    const buyerName = form.buyerName.value;
+    const buyerEmail = form.buyerEmail.value;
+    const quantity = parseInt(form.quantity.value);
+    const price = parseInt(form.price.value);
+    const address = form.address.value;
+    const phoneNumber = form.phoneNumber.value;
+    const additionalNote = form.additionalNote.value;
+
+    const formData = {
+      productId: _id,
+      productName,
+      buyerName,
+      buyerEmail,
+      quantity,
+      price,
+      address,
+      phoneNumber,
+      additionalNote,
+      date: new Date(),
+    };
+
+    axios
+      .post("http://localhost:3000/orders", formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="flex flex-col justify-center items-center ">
       <div className="hero bg-transparent ">
@@ -75,10 +119,120 @@ const ToyDetailsCard = ({ key, toyDetails }) => {
           </label>
           <div className="validator-hint hidden">Enter valid email address</div>
         </div>
-        <button onClick={notify} className="btn bg-transparent hover:bg-secondary join-item">
+        {/* Button */}
+        <button
+          onClick={notify}
+          className="btn bg-transparent hover:bg-secondary join-item"
+        >
           Try Now
         </button>
         <ToastContainer />
+      </div>
+      {/* Modal */}
+      <div>
+        <button
+          className="btn"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          Adapt / Order
+        </button>
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box w-fit">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
+            <form
+              onSubmit={handleOrder}
+              className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4"
+            >
+              <legend className="fieldset-legend">Order Details</legend>
+
+              <label className="label">Product Name</label>
+              <input
+                type="text"
+                className="input"
+                name="productName"
+                placeholder="Insert Product Name"
+                defaultValue={name}
+                readOnly
+                disabled
+              />
+
+              <label className="label">Buyer Name</label>
+              <input
+                type="text"
+                className="input"
+                name="buyerName"
+                placeholder="Insert Buyer Name"
+                defaultValue={user?.displayName}
+              />
+
+              <label className="label">Buyer Email</label>
+              <input
+                type="email"
+                className="input"
+                name="buyerEmail"
+                placeholder="Insert Buyer Email"
+                readOnly
+                defaultValue={user?.email}
+                disabled
+              />
+
+              <label className="label">Quantity</label>
+              <input
+                type="number"
+                className="input"
+                name="quantity"
+                placeholder="Insert Quantity"
+                required
+              />
+
+              <label className="label">Price</label>
+              <input
+                type="number"
+                className="input"
+                name="price"
+                placeholder="Insert Price"
+                readOnly
+                defaultValue={service?.price}
+                disabled
+              />
+
+              <label className="label">Address</label>
+              <input
+                type="text"
+                className="input"
+                name="address"
+                placeholder="Insert Address"
+                required
+              />
+
+              <label className="label">Phone Number</label>
+              <input
+                type="number"
+                className="input"
+                name="phoneNumber"
+                placeholder="Insert Phone Number"
+                required
+              />
+
+              <label className="label">Addional Note</label>
+              <textarea
+                type="text"
+                className="input"
+                name="additionalNote"
+                placeholder="Insert Addional Note"
+              />
+
+              <button type="submit" className="btn btn-primary">
+                Order
+              </button>
+            </form>
+          </div>
+        </dialog>
       </div>
     </div>
   );
