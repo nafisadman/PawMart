@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router";
 import router from "./routes/router.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import 'react-tooltip/dist/react-tooltip.css'
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

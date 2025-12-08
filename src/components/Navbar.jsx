@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 // import { ToastContainer, toast } from "react-toastify";
 import userIcon from "../assets/user.png";
 import toast from "react-hot-toast";
@@ -159,6 +160,14 @@ const Navbar = () => {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </label>
+          {!user && (
+            <div className="border rounded-full h-10 flex items-center">
+              <a className="my-anchor-element">◕‿◕</a>
+              <Tooltip anchorSelect=".my-anchor-element" place="left">
+                Login to see yourself here! 👉
+              </Tooltip>
+            </div>
+          )}
           <div className="login-btn flex gap-5 items-center">
             {user && (
               <div
