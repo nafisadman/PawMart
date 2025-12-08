@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Profile = () => {
   useEffect(() => {
-    document.title = "ToyTopia | Profile";
+    document.title = "";
   }, []);
   const { user, createUser, setUser, updateUser } = use(AuthContext);
   const [nameError, setNameError] = useState("");

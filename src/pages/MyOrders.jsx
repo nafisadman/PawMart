@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import useTitle from "../hooks/useTitle";
 
 const MyOrders = () => {
+  useTitle("My Orders");
   const [myOrders, setMyOrders] = useState([]);
 
   useEffect(() => {

@@ -3,8 +3,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const MyServices = () => {
+  useTitle("My Listings");
   const [myServices, setMyServices] = useState([]);
   const { user } = useContext(AuthContext);
 

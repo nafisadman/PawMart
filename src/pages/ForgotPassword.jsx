@@ -2,11 +2,10 @@ import React, { use, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useLocation } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../hooks/useTitle";
 
 const ForgotPassword = () => {
-  useEffect(() => {
-    document.title = "ToyTopia | Forgot Pass";
-  }, []);
+  useTitle("Forgot Password");
 
   const notify = () => toast("Email Link has been sent. Check your Spambox");
 

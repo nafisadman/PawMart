@@ -4,11 +4,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import SocialLogin from "../components/homelayout/SocialLogin";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Helmet } from "react-helmet";
+import useTitle from "../hooks/useTitle";
 
 const Register = () => {
-  useEffect(() => {
-    document.title = "ToyTopia | register";
-  }, []);
+  useTitle("Register");
   
   const { createUser, setUser, updateUser, signInWithGoogle } = use(AuthContext);
   const [nameError, setNameError] = useState("");
@@ -87,7 +86,7 @@ const Register = () => {
   return (
     <div className="flex justify-center min-h-screen items-center">
       <Helmet>
-        <title>ToyTopia | Register</title>
+        <title></title>
       </Helmet>
       <form
         onSubmit={handleRegister}

@@ -7,11 +7,11 @@ import RightAside from "../components/homelayout/RightAside";
 import Footer from "../components/Footer";
 import ToyDetailsCard from "../components/ToyDetailsCard";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../hooks/useTitle";
 
 const ToyDetails = () => {
-  useEffect(() => {
-    document.title = "ToyTopia | Toy Details";
-  }, []);
+  useTitle("Details");
+  
   // const data = useLoaderData();
   const { id } = useParams();
   

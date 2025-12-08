@@ -6,9 +6,12 @@ import Footer from "../components/Footer";
 import Slider from "../components/Slider";
 import HeroFigure from "../components/homelayout/HeroFigure";
 import CustomerReview from "../components/homelayout/CustomerReview";
-import CategorySection from "../components/homelayout/CategorySection"; 
+import CategorySection from "../components/homelayout/CategorySection";
+import useTitle from "../hooks/useTitle";
 
 const HomeLayout = () => {
+  useTitle("Home");
+
   const { state } = useNavigation();
 
   return (
@@ -23,10 +26,9 @@ const HomeLayout = () => {
         <div>
           <Slider></Slider>
         </div>
-        
-        {/* Add Category Section Here */}
+
         <div className="w-11/12 mx-auto my-3">
-             <CategorySection />
+          <CategorySection />
         </div>
 
         <div className="w-11/12 mx-auto my-3">

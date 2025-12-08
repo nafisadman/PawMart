@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const AddService = () => {
+  useTitle("Add Listing");
   const { user } = useContext(AuthContext);
 
   const handleSubmit = (e) => {

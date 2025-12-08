@@ -4,11 +4,11 @@ import { AuthContext } from "../provider/AuthProvider";
 import SocialLogin from "../components/homelayout/SocialLogin";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
-  useEffect(() => {
-    document.title = "ToyTopia | Login";
-  }, []);
+  useTitle("Login");
+  
   const [error, setError] = useState("");
   const { signIn, signInWithGoogle } = use(AuthContext);
   const location = useLocation();

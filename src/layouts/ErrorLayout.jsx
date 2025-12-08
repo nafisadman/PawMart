@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const ErrorLayout = () => {
   useEffect(() => {
-    document.title = "ToyTopia | Error 404";
+    document.title = "";
   }, []);
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const SalesLayout = () => {
   useEffect(() => {
-    document.title = "ToyTopia | About";
+    document.title = "";
   }, []);
   return (
     <div>
