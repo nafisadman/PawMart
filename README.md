@@ -2,6 +2,14 @@
 
 **PawMart** is a full-stack web application designed to connect pet owners with essential services and products. It serves as a comprehensive marketplace where users can browse pet toys, book services, and manage their own service listings.
 
+<p align="center">
+  <img 
+    src="https://i.ibb.co/bRyvyCjN/image-fotor-20251231233911.jpg" 
+    alt="PawMart Screenshot" 
+    width="800"
+  />
+</p>
+
 ## 🔗 Live Links
 - **Client (Frontend):** [https://pawmart-639fe.web.app](https://pawmart-639fe.web.app)
 - **Server (Backend API):** [https://b12-a11-pawmart-server.vercel.app](https://b12-a11-pawmart-server.vercel.app)
