@@ -8,6 +8,7 @@ import HeroFigure from "../components/homelayout/HeroFigure";
 import CustomerReview from "../components/homelayout/CustomerReview";
 import CategorySection from "../components/homelayout/CategorySection";
 import useTitle from "../hooks/useTitle";
+import HeroAdoptLoveBanner from "../components/homelayout/HeroAdoptLoveBanner/HeroAdoptLoveBanner";
 
 const HomeLayout = () => {
   useTitle("Home");
@@ -23,6 +24,9 @@ const HomeLayout = () => {
         </nav>
       </header>
       <main>
+        <div>
+          <HeroAdoptLoveBanner></HeroAdoptLoveBanner>
+        </div>
         <div>
           <Slider></Slider>
         </div>
