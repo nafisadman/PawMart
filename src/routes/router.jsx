@@ -20,6 +20,8 @@ import MyOrders from "../pages/MyOrders";
 import PetsAndSuppliers from "../pages/PetsAndSuppliers";
 import RecentListings from "../pages/RecentListings";
 import CategoryFilteredProducts from "../pages/CategoryFilteredProducts";
+import DashboardLayout from "../layouts/DashboardLayout";
+import UserDashboard from "../pages/Dashboard/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -115,6 +117,46 @@ const router = createBrowserRouter([
             <UpdateService></UpdateService>
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard",
+        Component: UserDashboard,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <div>hi</div>,
+      },
+      // Donor Dashboard
+      {
+        path: "/dashboard/my-donation-requests",
+        element: <div>hi</div>,
+      },
+      {
+        path: "/dashboard/create-donation-request",
+        element: <div>hi</div>,
+      },
+      {
+        path: "/dashboard/edit-donation-request/:id",
+        element: <div>hi</div>,
+      },
+      // Admin Dashboard
+      {
+        path: "/dashboard/all-users",
+        element: <div>hi</div>,
+      },
+      {
+        path: "/dashboard/all-blood-donation-request",
+        element: <div>hi</div>,
       },
     ],
   },

@@ -9,6 +9,10 @@ import CustomerReview from "../components/homelayout/CustomerReview";
 import CategorySection from "../components/homelayout/CategorySection";
 import useTitle from "../hooks/useTitle";
 import HeroAdoptLoveBanner from "../components/homelayout/HeroAdoptLoveBanner/HeroAdoptLoveBanner";
+import PricingCard from "../components/homelayout/PricingCard";
+import HowItWorks from "../components/homelayout/HowItWorks";
+import WeeklyNewsletter from "../components/homelayout/WeeklyNewsletter";
+import Discover from "../components/homelayout/Discover";
 
 const HomeLayout = () => {
   useTitle("Home");
@@ -43,9 +47,13 @@ const HomeLayout = () => {
         <div>
           <HeroFigure></HeroFigure>
         </div>
+        <PricingCard></PricingCard>
         <div>
           <CustomerReview></CustomerReview>
         </div>
+        <HowItWorks></HowItWorks>
+        <WeeklyNewsletter></WeeklyNewsletter>
+        <Discover></Discover>
       </main>
 
       <Footer></Footer>

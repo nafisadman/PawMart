@@ -32,37 +32,21 @@ const Navbar = () => {
       });
   };
   return (
-    <div class="navbar fixed top-0 left-0 w-full z-50 glass bg-secondary h-20">
+    <div class="navbar fixed top-0 left-0 w-full z-50 glass h-20">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
 
-          <ul
-            tabindex="0"
-            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/public/pets-and-suppliers">
-                Pets & Suppliers
-              </NavLink>
+              <NavLink to="/public/pets-and-suppliers">Pets & Suppliers</NavLink>
             </li>
             {user && (
               <>
@@ -132,12 +116,7 @@ const Navbar = () => {
             <circle cx="12" cy="12" r="5" />
             <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
           </svg>
-          <input
-            onClick={handleThemeChange}
-            type="checkbox"
-            value="synthwave"
-            className="toggle theme-controller"
-          />
+          <input onClick={handleThemeChange} type="checkbox" value="synthwave" className="toggle theme-controller" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -162,15 +141,27 @@ const Navbar = () => {
         )}
         <div className="login-btn flex gap-5 items-center">
           {user && (
-            <div
-              className="tooltip tooltip-bottom flex items-center hidden sm:block"
-              data-tip={user.email}
-            >
-              <img
-                className="w-12 h-12 object-cover rounded-full"
-                src={`${user ? user.photoURL : userIcon}`}
-                alt="User Profile"
-              />
+            <>
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                  <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+                    <img src={user?.photoURL || "https://img.daisyui.com/images/profile/demo/spiderperson@192.webp"} />
+                  </div>
+                </div>
+                <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                  <li>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                  </li>
+                  <li>
+                    <Link>Logout</Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          )}
+          {user && (
+            <div className="tooltip tooltip-bottom flex items-center hidden sm:block" data-tip={user.email}>
+              <img className="w-12 h-12 object-cover rounded-full" src={`${user ? user.photoURL : userIcon}`} alt="User Profile" />
             </div>
           )}
           {user ? (

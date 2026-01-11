@@ -15,6 +15,24 @@ const Login = () => {
   const navigate = useNavigate();
   const [emailInput, setEmailInput] = useState("");
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    const email = "demo.user@email.com";
+    const password = "Az@123456";
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user)
+        toast("Signed in successful");
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        setError(errorCode);
+      });
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -48,29 +66,20 @@ const Login = () => {
   return (
     <div className="flex justify-center min-h-screen items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-        <h2 className="font-semibold text-2xl text-center">
-          Login your account
-        </h2>
+        <h2 className="font-semibold text-2xl text-center">Login your account</h2>
+        <form onSubmit={handleDemoLogin} className="card-body">
+          <button type="submit" className="btn btn-secondary">
+            Demo User
+          </button>
+        </form>
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
             {/* Email */}
             <label className="label">Email</label>
-            <input
-              name="email"
-              type="email"
-              className="input w-full"
-              placeholder="Email"
-              onChange={(e) => setEmailInput(e.target.value)}
-              required
-            />
+            <input name="email" type="email" className="input w-full" placeholder="Email" onChange={(e) => setEmailInput(e.target.value)} required />
             {/* Password */}
             <label className="label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="input w-full"
-              placeholder="Password"
-            />
+            <input name="password" type="password" className="input w-full" placeholder="Password" />
             {/* <div>
               <Link
                 to="/auth/forgot-password"
@@ -82,15 +91,12 @@ const Login = () => {
             </div> */}
             {error && <p className="text-red-400 text-xs">{error}</p>}
             <div className="flex flex-col mt-4">
-              <button
-                onClick={handleGoogleSignIn}
-                className="btn btn-outline btn-secondary"
-              >
+              <button onClick={handleGoogleSignIn} className="btn btn-outline btn-secondary">
                 <FcGoogle size={24} />
                 Continue with Google
               </button>
             </div>
-            <button type="submit" className="btn btn-neutral">
+            <button type="submit" className="btn btn-primary">
               Login
             </button>
             <p className="font-semibold text-center pt-5">

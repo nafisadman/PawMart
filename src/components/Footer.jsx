@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer bg-base-200 text-base-content p-10 flex flex-col md:flex-row justify-center gap-10 md:gap-48 items-center">
+    <footer className="footer bg-neutral text-neutral-content p-10 flex flex-col md:flex-row justify-center gap-10 md:gap-48 items-center">
       <aside className="flex flex-col items-center md:items-start text-center md:text-left">
         <img src="/paw.svg" alt="PawMart Logo" width="50" height="50" />
         <p>
