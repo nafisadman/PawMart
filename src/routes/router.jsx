@@ -22,11 +22,13 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import UserDashboard from "../pages/Dashboard/UserDashboard";
 // import Profile from "../pages/Dashboard/Profile";
 import MyItems from "../pages/Dashboard/MyItems";
+import AllUsers from "../pages/Dashboard/AllUsers";
 import About from "../pages/About";
 import Profile from "../pages/Dashboard/Profile";
 import Resources from "../components/homelayout/Resources";
 import Contact from "../components/homelayout/Contact";
 import UpdateItem from "../pages/Dashboard/UpdateItem";
+import AllPets from "../pages/Dashboard/AllPets";
 
 const router = createBrowserRouter([
   {
@@ -178,18 +180,24 @@ const router = createBrowserRouter([
       },
       {
         path: "my-orders",
-        element: (
-            <MyOrders></MyOrders>
-        ),
+        element: <MyOrders></MyOrders>,
       },
       // Admin Dashboard
+      // {
+      //   path: "/dashboard/all-users",
+      //   element: <div>hi</div>,
+      // },
+      // {
+      //   path: "/dashboard/all-blood-donation-request",
+      //   element: <div>hi</div>,
+      // },
       {
         path: "/dashboard/all-users",
-        element: <div>hi</div>,
+        element: <AllUsers></AllUsers>, 
       },
       {
-        path: "/dashboard/all-blood-donation-request",
-        element: <div>hi</div>,
+        path: "/dashboard/all-pets", 
+        element: <AllPets></AllPets>, 
       },
     ],
   },

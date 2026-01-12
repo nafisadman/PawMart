@@ -27,11 +27,7 @@ const Sidebar = () => {
           <li>
             <NavLink
               to="/"
-              className={({ isActive }) =>
-                `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 p-2 rounded ${
-                  isActive ? "bg-primary text-white" : "hover:bg-base-300"
-                }`
-              }
+              className={({ isActive }) => `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 p-2 rounded ${isActive ? "bg-primary text-white" : "hover:bg-base-300"}`}
               data-tip="Homepage"
             >
               <HomeIcon />
@@ -55,7 +51,7 @@ const Sidebar = () => {
           </li>
 
           {/* List item */}
-          {role == "user" && (
+          {(role === "user") && (
             <>
               <li>
                 <NavLink to="/dashboard/add-item" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Item">
@@ -79,38 +75,34 @@ const Sidebar = () => {
           )}
 
           {/* List item */}
-          {role == "admin" && (
+          {role === "admin" && (
             <>
               <li>
                 <NavLink to="/dashboard/all-users" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Users">
-                  <AllUsersIcon></AllUsersIcon>
+                  <AllUsersIcon />
                   <span className="is-drawer-close:hidden">All Users</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/dashboard/all-blood-donation-request"
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="All Donation Requests"
-                >
-                  <AllDonationRequestsIcon></AllDonationRequestsIcon>
-                  <span className="is-drawer-close:hidden">All Donation Requests</span>
+                <NavLink to="/dashboard/all-pets" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Pets & Items">
+                  <AllDonationRequestsIcon /> {/* You can rename this icon component later */}
+                  <span className="is-drawer-close:hidden">All Pets & Items</span>
                 </NavLink>
               </li>
             </>
           )}
 
           {/* List item */}
-          {role == "manager" && (
+          {role === "manager" && (
             <>
               <li>
                 <NavLink
-                  to="/dashboard/all-blood-donation-request"
+                  to="/dashboard/all-pets"  
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="All Donation Requests"
+                  data-tip="All Pets"
                 >
-                  <AllDonationRequestsIcon></AllDonationRequestsIcon>
-                  <span className="is-drawer-close:hidden">All Donation Requests</span>
+                  <AllDonationRequestsIcon />
+                  <span className="is-drawer-close:hidden">All Pets & Items</span>
                 </NavLink>
               </li>
             </>

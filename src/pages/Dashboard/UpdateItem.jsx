@@ -19,7 +19,7 @@ const UpdateItem = () => {
 
   // 1. Fetch existing data when page loads
   useEffect(() => {
-    axiosSecure.get(`http://localhost:3000/services/details/${id}`)
+    axiosSecure.get(`https://b12-a11-pawmart-server.vercel.app/services/details/${id}`)
       .then((res) => {
         setFormData(res.data);
       })
@@ -37,7 +37,7 @@ const UpdateItem = () => {
     e.preventDefault();
     
     try {
-      const res = await axiosSecure.put(`http://localhost:3000/update-item/${id}`, formData);
+      const res = await axiosSecure.put(`https://b12-a11-pawmart-server.vercel.app/update-item/${id}`, formData);
       if (res.data.modifiedCount > 0) {
         // Success Message
         alert("Item updated successfully!"); 

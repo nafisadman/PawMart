@@ -24,14 +24,14 @@ const RecentRequest = () => {
       setDistricts(res.data.districts);
     });
 
-    axiosSecure.get(`http://localhost:3000/recent-requests/${user?.email}`).then((res) => {
+    axiosSecure.get(`https://b12-a11-pawmart-server.vercel.app/recent-requests/${user?.email}`).then((res) => {
       console.log("/services/:email", res.data);
       setRecentRequests(res.data);
     });
   }, [axiosSecure, user?.email]);
 
   const handleStatusUpdate = (id, newStatus) => {
-    axiosSecure.patch(`http://localhost:3000/donation-request-status/${id}`, { status: newStatus }).then((res) => {
+    axiosSecure.patch(`https://b12-a11-pawmart-server.vercel.app/donation-request-status/${id}`, { status: newStatus }).then((res) => {
       if (res.data.modifiedCount > 0) {
         // FIX: Change 'myItems' to 'recentRequests'
         const updatedRequests = recentRequests.map((item) => (item._id === id ? { ...item, itemStatus: newStatus } : item));
@@ -47,7 +47,7 @@ const RecentRequest = () => {
 
     // Make sure the URL matches the backend route created above
     axiosSecure
-      .delete(`http://localhost:3000/requests/${id}`)
+      .delete(`https://b12-a11-pawmart-server.vercel.app/requests/${id}`)
       .then((res) => {
         // Check if the delete was successful in the database
         if (res.data.deletedCount > 0) {

@@ -17,7 +17,7 @@ const MyItems = () => {
     if (user?.email) {
       axiosSecure
         .get(
-          `http://localhost:3000/users-items?email=${user.email}&page=${currentPage - 1}&size=${itemsPerPage}&status=${selectedStatus.join(",")}`
+          `https://b12-a11-pawmart-server.vercel.app/users-items?email=${user.email}&page=${currentPage - 1}&size=${itemsPerPage}&status=${selectedStatus.join(",")}`
         )
         .then((res) => {
           setMyRequests(res.data.result);
@@ -40,7 +40,7 @@ const MyItems = () => {
 
   // Helper to update status
   const handleStatusUpdate = (id, newStatus) => {
-    axiosSecure.patch(`http://localhost:3000/donation-request-status/${id}`, { status: newStatus }).then((res) => {
+    axiosSecure.patch(`https://b12-a11-pawmart-server.vercel.app/donation-request-status/${id}`, { status: newStatus }).then((res) => {
       if (res.data.modifiedCount > 0) {
         const updatedRequests = myItems.map((item) =>
           item._id === id ? { ...item, itemStatus: newStatus } : item
