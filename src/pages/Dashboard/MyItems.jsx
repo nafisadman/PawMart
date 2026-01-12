@@ -1,0 +1,201 @@
+import React, { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import axios from "axios";
+import { Link, Links } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
+
+const MyRequests = () => {
+  const { user } = useContext(AuthContext);
+
+  const axiosSecure = useAxiosSecure();
+
+  console.log("MyItemssssssss", user?.email);
+
+  const [upazilas, setUpazilas] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [totalRequests, setTotalRequests] = useState(0);
+  const [myItems, setMyRequests] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recentItems, setRecentItems] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState([]);
+
+  // const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    axios.get("/upazilas.json").then((res) => {
+      setUpazilas(res.data.upazilas);
+    });
+
+    axios.get("/districts.json").then((res) => {
+      setDistricts(res.data.districts);
+    });
+
+    axiosSecure.get(`/services/${user?.email}?page=${currentPage - 1}&size=${itemsPerPage}&status=${selectedStatus}`).then((res) => {
+      console.log("/services/:email", res.data.result);
+      // setRecentItems(res.data.result);
+      setMyRequests(res.data.result);
+    });
+
+    axiosSecure.get(`/my-items?page=${currentPage - 1}&size=${itemsPerPage}&status=${selectedStatus}`).then((res) => {
+      setMyRequests(res.data.result);
+      setTotalRequests(res.data.totalRequest);
+    });
+  }, [axiosSecure, currentPage, itemsPerPage, selectedStatus]);
+
+  const numberOfPages = Math.ceil(totalRequests / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()].map((e) => e + 1);
+
+  // console.log("currentPage for pagination", currentPage);
+
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    if (currentPage < pages.length) setCurrentPage(currentPage + 1);
+  };
+
+  // Handle Status Button
+  const handleStatusUpdate = (id, newStatus) => {
+    axiosSecure.patch(`/donation-request-status/${id}`, { status: newStatus }).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        const updatedRequests = myItems.map((request) => (request._id === id ? { ...request, request_status: newStatus } : request));
+        setMyRequests(updatedRequests);
+      }
+    });
+  };
+
+  // Handle Delete
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this donation request?");
+
+    if (!confirmDelete) return;
+
+    axiosSecure
+      .delete(`/requests/${id}`)
+      .then(() => {
+        setMyRequests((prev) => prev.filter((item) => item._id !== id));
+      })
+      .catch(console.error);
+  };
+
+  // Handle Checkbox Toggle
+  const handleFilterChange = (status) => {
+    setSelectedStatus((prevSetSelectedStatus) => {
+      if (prevSetSelectedStatus.includes(status)) {
+        // Remove if already selected
+        return prevSetSelectedStatus.filter((s) => s !== status);
+      } else {
+        // Add if not selected
+        return [...prevSetSelectedStatus, status];
+      }
+    });
+  };
+
+  // Handle Reset
+  const handleReset = () => {
+    setSelectedStatus([]); // Clear all filters
+  };
+
+  return (
+    <div>
+      {/* Header for Filtering */}
+      <div>
+        <form className="flex flex-wrap gap-1">
+          <input checked={selectedStatus.includes("pending")} onChange={() => handleFilterChange("pending")} className="btn" type="checkbox" name="frameworks" aria-label="Pending" />
+          <input checked={selectedStatus.includes("inprogress")} onChange={() => handleFilterChange("inprogress")} className="btn" type="checkbox" name="frameworks" aria-label="In Progress" />
+          <input checked={selectedStatus.includes("done")} onChange={() => handleFilterChange("done")} className="btn" type="checkbox" name="frameworks" aria-label="Done" />
+          <input checked={selectedStatus.includes("cancelled")} onChange={() => handleFilterChange("cancelled")} className="btn" type="checkbox" name="frameworks" aria-label="Cancelled" />
+          <input onClick={handleReset} className="btn btn-square" type="reset" value="×" />
+        </form>
+      </div>
+      {/* Table */}
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 my-4">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Receipient Name</th>
+              <th>Receipient Location</th>
+              <th>Time & Date</th>
+              {/* <th>Hospital</th> */}
+              <th>Blood Group</th>
+              <th>Donation Status</th>
+              <th>Donor Info</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myItems.map((myItem, index) => (
+              <tr>
+                <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
+                <td>{myItem.name}</td>
+                <td>
+                  {upazilas.find((u) => u.id == myItem?.upazila)?.name}, {districts.find((u) => u.id == myItem?.district)?.name}
+                </td>
+                <td>
+                  {myItem.donationTime}, {myItem.donationDate}
+                </td>
+                {/* <td>{myItem.hospitalName}</td> */}
+                <td>{myItem?.request_status}</td>
+                <td>
+                  {myItem?.request_status === "inprogress" ? (
+                    <>
+                      {myItem?.donorName}
+                      <br />
+                      {myItem?.donorEmail}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </td>
+                <td className="flex">
+                  <Link to={`/dashboard/edit-donation-request/${myItem._id}`} className="btn btn-xs">
+                    Edit
+                  </Link>
+                  <button className="btn btn-xs" onClick={() => handleDelete(myItem._id)}>
+                    Delete
+                  </button>
+                  <Link to={`/requests/${myItem._id}`} className="btn btn-xs">
+                    View
+                  </Link>
+                  {myItem?.request_status === "inprogress" && (
+                    <>
+                      <button onClick={() => handleStatusUpdate(myItem._id, "done")} className="btn btn-xs">
+                        Done
+                      </button>
+                      <button onClick={() => handleStatusUpdate(myItem._id, "canceled")} className="btn btn-xs">
+                        Cancel
+                      </button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-center">
+        <div className="join flex-wrap">
+          <button onClick={handlePrev} className="join-item btn" disabled={currentPage === 1}>
+            Previous
+          </button>
+          {pages.map((page) => (
+            <button className={`join-item btn ${page === currentPage ? "btn-active" : ""}`} onClick={() => setCurrentPage(page)}>
+              {page}
+            </button>
+          ))}
+          <button onClick={handleNext} className="join-item btn" disabled={currentPage === pages.length}>
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MyRequests;

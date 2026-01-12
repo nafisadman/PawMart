@@ -21,6 +21,7 @@ import CategoryFilteredProducts from "../pages/CategoryFilteredProducts";
 import DashboardLayout from "../layouts/DashboardLayout";
 import UserDashboard from "../pages/Dashboard/UserDashboard";
 // import Profile from "../pages/Dashboard/Profile";
+import MyItems from "../pages/Dashboard/MyItems";
 import About from "../pages/About";
 import Profile from "../pages/Dashboard/Profile";
 
@@ -144,7 +145,7 @@ const router = createBrowserRouter([
         path: "/dashboard/my-items",
         element: (
           <PrivateRoute>
-            <MyServices></MyServices>
+            <MyItems></MyItems>
           </PrivateRoute>
         ),
       },

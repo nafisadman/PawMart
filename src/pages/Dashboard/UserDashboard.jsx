@@ -16,7 +16,7 @@ const UserDashboard = () => {
 
       {/* Donor */}
       {role == 'user' && <div>Hello! You are in the user dashboard</div>}
-      {role == "Donor" && <RecentRequest></RecentRequest>}
+      {role == "user" && <RecentRequest></RecentRequest>}
 
       {/* Admin & Volunteer */}
       {(role === "Admin" || role === "Volunteer") && (
