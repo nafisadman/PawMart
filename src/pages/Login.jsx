@@ -15,21 +15,25 @@ const Login = () => {
   const navigate = useNavigate();
   const [emailInput, setEmailInput] = useState("");
 
-  const handleDemoLogin = (e) => {
-    e.preventDefault();
-    const email = "demo.user@email.com";
+  const handleDemoLogin = (role) => {
+    let email = "";
     const password = "Az@123456";
+
+    if (role === "user") {
+      email = "demo_user@email.com";
+    } else if (role === "manager") {
+      email = "demo_manager@email.com";
+    } else if (role === "admin") {
+      email = "demo_admin@email.com";
+    }
 
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
-        // console.log(user)
-        toast("Signed in successful");
-        navigate(`${location.state ? location.state : "/"}`);
+        toast(`Signed in as ${role}`);
+        navigate(location.state || "/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        setError(errorCode);
+        setError(error.code);
       });
   };
 
@@ -67,11 +71,20 @@ const Login = () => {
     <div className="flex justify-center min-h-screen items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
         <h2 className="font-semibold text-2xl text-center">Login your account</h2>
-        <form onSubmit={handleDemoLogin} className="card-body">
-          <button type="submit" className="btn btn-secondary">
+        <div className="card-body gap-3">
+          <button onClick={() => handleDemoLogin("user")} className="btn btn-secondary">
             Demo User
           </button>
-        </form>
+
+          <button onClick={() => handleDemoLogin("manager")} className="btn btn-accent">
+            Demo Manager
+          </button>
+
+          <button onClick={() => handleDemoLogin("admin")} className="btn btn-warning">
+            Demo Admin
+          </button>
+        </div>
+
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
             {/* Email */}

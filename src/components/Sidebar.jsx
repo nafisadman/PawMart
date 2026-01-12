@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import HomeIcon from "../components/Icons/HomeIcon";
 import { Link, NavLink } from "react-router";
 import SettingsIcon from "../components/Icons/SettingsIcon";
+import { MdAttachMoney } from "react-icons/md";
 
 import CreateIcon from "./Icons/CreateIcon";
 import AllUsersIcon from "./Icons/AllUsersIcon";
@@ -68,11 +69,17 @@ const Sidebar = () => {
                   <span className="is-drawer-close:hidden">My Items</span>
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/my-orders" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Items">
+                  <MdAttachMoney />
+                  <span className="is-drawer-close:hidden">My Orders</span>
+                </NavLink>
+              </li>
             </>
           )}
 
           {/* List item */}
-          {role == "Admin" && (
+          {role == "admin" && (
             <>
               <li>
                 <NavLink to="/dashboard/all-users" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="All Users">
@@ -94,7 +101,7 @@ const Sidebar = () => {
           )}
 
           {/* List item */}
-          {role == "Volunteer" && (
+          {role == "manager" && (
             <>
               <li>
                 <NavLink

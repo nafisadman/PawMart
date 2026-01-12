@@ -24,6 +24,9 @@ import UserDashboard from "../pages/Dashboard/UserDashboard";
 import MyItems from "../pages/Dashboard/MyItems";
 import About from "../pages/About";
 import Profile from "../pages/Dashboard/Profile";
+import Resources from "../components/homelayout/Resources";
+import Contact from "../components/homelayout/Contact";
+import UpdateItem from "../pages/Dashboard/UpdateItem";
 
 const router = createBrowserRouter([
   {
@@ -65,12 +68,20 @@ const router = createBrowserRouter([
       {
         path: "pets-and-suppliers",
         element: <PetsAndSuppliers></PetsAndSuppliers>,
-        loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
-        hydrateFallbackElement: <Loading></Loading>,
+        // loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
+        // hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "contact",
+        Component: Contact,
       },
       {
         path: "about",
         Component: About,
+      },
+      {
+        path: "resources",
+        Component: Resources,
       },
     ],
   },
@@ -161,6 +172,16 @@ const router = createBrowserRouter([
         path: "/dashboard/edit-donation-request/:id",
         element: <div>hi</div>,
       },
+      {
+        path: "update-item/:id",
+        element: <UpdateItem></UpdateItem>,
+      },
+      {
+        path: "my-orders",
+        element: (
+            <MyOrders></MyOrders>
+        ),
+      },
       // Admin Dashboard
       {
         path: "/dashboard/all-users",
@@ -174,12 +195,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/toy-details/:id",
-    element: (
-      <PrivateRoute>
-        <ToyDetails></ToyDetails>
-      </PrivateRoute>
-    ),
-    loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
+    element: <ToyDetails></ToyDetails>,
+    // loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
     hydrateFallbackElement: <Loading></Loading>,
   },
   {

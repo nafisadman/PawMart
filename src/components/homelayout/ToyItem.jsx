@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 
 const ToyItem = ({ toy }) => {
   useEffect(() => {
-    // AOS.init();
   }, []);
   const { _id, name, imageUrl, description, price, location, category } = toy;
   console.log(toy);
@@ -21,10 +20,6 @@ const ToyItem = ({ toy }) => {
     <div>
       <div
         className="card bg-base-100 max-w-96 max-h-96 shadow-sm m-5 "
-        // data-aos="fade-zoom-in"
-        // data-aos-offset="200"
-        // data-aos-easing="ease-in-sine"
-        // data-aos-duration="600"
       >
         <figure>
           <img src={imageUrl} alt="Shoes" />
@@ -47,7 +42,7 @@ const ToyItem = ({ toy }) => {
           <div>
             <Link
               to={`/toy-details/${_id}`}
-              className="btn btn-block bg-transparent hover:bg-secondary hover:text-white"
+              className="btn btn-block btn-secondary btn-soft hover:bg-secondary hover:text-white"
               onClick={handleViewMore}
             >
               View More

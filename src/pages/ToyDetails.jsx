@@ -1,45 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, useLoaderData, useNavigation, useParams } from "react-router";
+import { useParams } from "react-router";
 import Navbar from "../components/Navbar";
-import Slider from "../components/Slider";
-import Loading from "./Loading";
-import RightAside from "../components/homelayout/RightAside";
 import Footer from "../components/Footer";
 import ToyDetailsCard from "../components/ToyDetailsCard";
-import { ToastContainer, toast } from "react-toastify";
+import Loading from "./Loading";
 import useTitle from "../hooks/useTitle";
 
 const ToyDetails = () => {
   useTitle("Details");
-  
-  // const data = useLoaderData();
   const { id } = useParams();
-  
-  // const toyDetails = data.find((singleToy) => singleToy.toyId == id);
-  // console.log("data: ", toyDetails);
+  console.log("manual tracing: toy details page", id); // successfully prints the id 692...
 
-  const [petDetails, setPetDetails] = useState([]);
+  const [petDetails, setPetDetails] = useState(null);
 
-  useEffect(()=>{
-    fetch(`https://b12-a11-pawmart-server.vercel.app/services/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      setPetDetails(data);
-    })
-    .catch(err=> console.log(err));
+  useEffect(() => {
+    fetch(`https://b12-a11-pawmart-server.vercel.app/services/details/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("manual tracing: data", data);
+        setPetDetails(data);
+      })
+      .catch((err) => console.log(err));
   }, [id]);
 
   return (
-    <div>
+    <div className="pt-20">
       <header>
-        {/* Navbar */}
         <nav className="w-11/12 mx-auto my-3">
           <Navbar></Navbar>
         </nav>
       </header>
       <main className="w-11/12 mx-auto my-3 gap-5">
-        <h2 className="font-bold mb-5">Toy Details</h2>
-        <ToyDetailsCard key={id} toyDetails={petDetails}></ToyDetailsCard>
+        <h2 className="text-3xl text-primary font-bold mb-5">Details</h2>
+        {petDetails ? <ToyDetailsCard toyDetails={petDetails}></ToyDetailsCard> : <Loading></Loading>}
       </main>
       <Footer></Footer>
     </div>

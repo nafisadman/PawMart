@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
       // console.log("AuthProvider.jsx --> ", user.email);
 
       axios
-        .get(`http://localhost:3000/users/${user.email}`)
+        .get(`https://b12-a11-pawmart-server.vercel.app/users/${user.email}`)
         .then((res) => {
           if (res.data) {
             console.log("AuthProvider.jsx res: ", res.data);

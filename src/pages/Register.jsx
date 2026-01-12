@@ -64,7 +64,7 @@ const Register = () => {
         // console.log(user);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
-            axios.post("http://localhost:3000/users", formdata);
+            axios.post("https://b12-a11-pawmart-server.vercel.app/users", formdata);
             setUser({ ...user, displayName: name, photoURL: photo }); // Firebase
             toast("Registration Successful!");
             navigate("/");
