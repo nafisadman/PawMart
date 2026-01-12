@@ -51,9 +51,6 @@ const Navbar = () => {
             {user && (
               <>
                 <li>
-                  <NavLink to="/auth/add-services">Add Listing</NavLink>
-                </li>
-                <li>
                   <NavLink to="/auth/my-services">My Listings</NavLink>
                 </li>
                 <li>
@@ -61,6 +58,9 @@ const Navbar = () => {
                 </li>
               </>
             )}
+            <li>
+              <NavLink to="/public/about">About</NavLink>
+            </li>
           </ul>
         </div>
         <a href="/" class="btn btn-ghost text-xl flex items-center justify-center">
@@ -87,9 +87,6 @@ const Navbar = () => {
           {user && (
             <>
               <li>
-                <NavLink to="/auth/add-services">Add Listing</NavLink>
-              </li>
-              <li>
                 <NavLink to="/auth/my-services">My Listings</NavLink>
               </li>
               <li>
@@ -97,6 +94,9 @@ const Navbar = () => {
               </li>
             </>
           )}
+          <li>
+            <NavLink to="/public/about">About</NavLink>
+          </li>
         </ul>
       </div>
 

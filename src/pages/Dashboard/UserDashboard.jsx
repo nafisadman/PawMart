@@ -15,6 +15,7 @@ const UserDashboard = () => {
       <Welcome></Welcome>
 
       {/* Donor */}
+      {role == 'user' && <div>Hello! You are in the user dashboard</div>}
       {role == "Donor" && <RecentRequest></RecentRequest>}
 
       {/* Admin & Volunteer */}

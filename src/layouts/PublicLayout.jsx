@@ -11,7 +11,7 @@ const HomeLayout = () => {
   const { state } = useNavigation();
 
   return (
-    <div>
+    <div className="py-20">
       <header>
         {/* Navbar */}
         <nav className="w-11/12 mx-auto my-3">

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Welcome = () => {
-  const { name } = useContext(AuthContext);
-  console.log('naaaaaaame', name);
+  const { user } = useContext(AuthContext);
+  console.log('naaaaaaame', user?.displayName);
   return (
     <div
       className="hero"
@@ -15,7 +15,7 @@ const Welcome = () => {
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello {name}</h1>
+          <h1 className="mb-5 text-5xl font-bold">Hello {user?.displayName}</h1>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ const PetsAndSuppliers = () => {
     useTitle("Pets & Suppliers");
 
     return (
-        <section className='pt-20'>
+        <section>
             <ToyStore></ToyStore>
         </section>
     );

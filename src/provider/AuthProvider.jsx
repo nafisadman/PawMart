@@ -9,8 +9,9 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -20,7 +21,11 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState("");
+  const [roleLoading, setRoleLoading] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("");
+  const [userStatus, setUserStatus] = useState("");
 
   // console.log(loading, user);
 
@@ -37,11 +42,11 @@ const AuthProvider = ({ children }) => {
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
-  }
+  };
 
   const updateUser = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData);
-  }
+  };
 
   const logOut = () => {
     return signOut(auth);
@@ -49,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -60,9 +65,31 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-  
+
+  useEffect(() => {
+    if (user) {
+      setRoleLoading(true);
+      // console.log("AuthProvider.jsx --> ", user.email);
+
+      axios
+        .get(`http://localhost:3000/users/${user.email}`)
+        .then((res) => {
+          if (res.data) {
+            console.log("AuthProvider.jsx res: ", res.data);
+            setName(res.data.name);
+            setRole(res.data.role);
+            setUserStatus(res.data.status);
+          }
+        })
+        .finally(() => {
+          setRoleLoading(false);
+        });
+    }
+  }, [user]);
+
   const authData = {
     user,
+    role,
     setUser,
     createUser,
     logOut,
@@ -71,9 +98,9 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     updateUser,
-    resetPassword
+    resetPassword,
   };
-  
+
   return <AuthContext value={authData}>{children}</AuthContext>;
 };
 

@@ -12,7 +12,7 @@ const useAxiosSecure = () => {
       return config;
     });
 
-    const resInterceptor = axiosSecure.interceptors.response(
+    const resInterceptor = axiosSecure.interceptors.response.use(
       (response) => {
         return response;
       },
@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
 
     return () => {
       axiosSecure.interceptors.request.eject(reqInterceptor);
-      axiosSecure.interceptors.request.eject(resInterceptor);
+      axiosSecure.interceptors.response.eject(resInterceptor);
     };
   }, [user?.accessToken]);
   return axiosSecure;

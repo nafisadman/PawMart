@@ -14,6 +14,7 @@ import ProfileIcon from "./Icons/ProfileIcon";
 
 const Sidebar = () => {
   const { role } = useContext(AuthContext);
+  console.log("User Role: ", role);
 
   return (
     <div className="drawer-side is-drawer-close:overflow-visible">
@@ -53,18 +54,18 @@ const Sidebar = () => {
           </li>
 
           {/* List item */}
-          {role == "Donor" && (
+          {role == "user" && (
             <>
               <li>
-                <NavLink to="/dashboard/my-donation-requests" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Donation Requests">
-                  <DonationRequestsIcon></DonationRequestsIcon>
-                  <span className="is-drawer-close:hidden">My Donation Requests</span>
+                <NavLink to="/dashboard/add-item" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Item">
+                  <CreateIcon></CreateIcon>
+                  <span className="is-drawer-close:hidden">Add Item</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/create-donation-request" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Request">
-                  <CreateIcon></CreateIcon>
-                  <span className="is-drawer-close:hidden">Add Request</span>
+                <NavLink to="/dashboard/my-items" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Items">
+                  <DonationRequestsIcon></DonationRequestsIcon>
+                  <span className="is-drawer-close:hidden">My Items</span>
                 </NavLink>
               </li>
             </>

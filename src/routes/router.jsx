@@ -7,11 +7,9 @@ import Register from "../pages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "../pages/Loading";
-import ToyStore from "../components/homelayout/ToyStore";
 import ToyDetails from "../pages/ToyDetails";
-import SalesLayout from "../layouts/SalesLayout";
 import ErrorLayout from "../layouts/ErrorLayout";
-import Profile from "../pages/Profile";
+// import Profile from "../pages/Profile";
 import ForgotPassword from "../pages/ForgotPassword";
 import AddService from "../pages/AddService";
 import MyServices from "../pages/MyServices";
@@ -22,6 +20,9 @@ import RecentListings from "../pages/RecentListings";
 import CategoryFilteredProducts from "../pages/CategoryFilteredProducts";
 import DashboardLayout from "../layouts/DashboardLayout";
 import UserDashboard from "../pages/Dashboard/UserDashboard";
+// import Profile from "../pages/Dashboard/Profile";
+import About from "../pages/About";
+import Profile from "../pages/Dashboard/Profile";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/pets/",
         element: <RecentListings></RecentListings>,
-        loader: () =>
-          fetch("https://b12-a11-pawmart-server.vercel.app/recent-services"),
+        loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/recent-services"),
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
@@ -64,9 +64,12 @@ const router = createBrowserRouter([
       {
         path: "pets-and-suppliers",
         element: <PetsAndSuppliers></PetsAndSuppliers>,
-        loader: () =>
-          fetch("https://b12-a11-pawmart-server.vercel.app/services"),
+        loader: () => fetch("https://b12-a11-pawmart-server.vercel.app/services"),
         hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "about",
+        Component: About,
       },
     ],
   },
@@ -91,14 +94,6 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddService></AddService>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/auth/my-services",
-        element: (
-          <PrivateRoute>
-            <MyServices></MyServices>
           </PrivateRoute>
         ),
       },
@@ -134,9 +129,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/profile",
-        element: <div>hi</div>,
+        Component: Profile,
       },
-      // Donor Dashboard
+      // User Dashboard
+      {
+        path: "/dashboard/add-item",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-items",
+        element: (
+          <PrivateRoute>
+            <MyServices></MyServices>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/dashboard/my-donation-requests",
         element: <div>hi</div>,
@@ -159,22 +170,6 @@ const router = createBrowserRouter([
         element: <div>hi</div>,
       },
     ],
-  },
-  {
-    path: "/about",
-    element: (
-      <PrivateRoute>
-        <SalesLayout></SalesLayout>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "/profile",
-    element: (
-      <PrivateRoute>
-        <Profile></Profile>
-      </PrivateRoute>
-    ),
   },
   {
     path: "/toy-details/:id",
